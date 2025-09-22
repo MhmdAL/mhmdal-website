@@ -8,7 +8,7 @@ function Projects() {
         title: "Polling Application",
         description: "A polling application built with Angular and ASP.NET Core. It allows the user to create polls and share them with others.",
         technologies: ["Angular", "ASP.NET Core", "C#", "Supabase", "PostgreSQL"],
-        image: "/api/placeholder/600/400",
+        images: ["/images/projects/polling-bee-1.png", "/images/projects/polling-bee-2.png", "/images/projects/polling-bee-3.png", "/images/projects/polling-bee-4.png", "/images/projects/polling-bee-5.png"],
         liveUrl: "https://your-polling-app.com",
         githubUrl: "https://github.com/MhmdAL/polling-app"
     },  
@@ -17,7 +17,7 @@ function Projects() {
         title: "Drone Delivery System",
         description: "DDS is a drone delivery system prototype. It has 3 main components: the drone, the ground station, and the mobile app. The user can request a drone to his station which will come and allow him to load his items. Then he can select a destination and the drone delivers his items to the recipient.",
         technologies: ["Node.js", "PostgreSQL", "Express", "MQTT", "Raspberry Pi", "Parrot Drone", "Python", "Flask", "MAVLink Protocol", "Native Android"],
-        image: "/api/placeholder/600/400",
+        images: ["/images/projects/dds.png", "/images/projects/dds2.png"],
         liveUrl: "https://github.com/MhmdAL/dds_backend", // No live demo
         githubUrl: "https://github.com/MhmdAL/dds_backend", // Private/proprietary project
       },
@@ -26,7 +26,7 @@ function Projects() {
         title: "Grow Away",
         description: "A simple 2D game created as an entry to a 7-day game jam.",
         technologies: ["Unity2D", "C#"],
-        images: ["/images/projects/grow-away.png", "/images/projects/grow-away2.png"],
+        images: ["/images/projects/grow-away.png", "/images/projects/grow-away2.png", "/images/projects/grow-away3.png"],
         liveUrl: "https://mhmdal.itch.io/grow-away",
         githubUrl: "https://github.com/MhmdAL/Grow-Away", // Private repository
       },
