@@ -7,9 +7,9 @@ function Projects() {
         id: 1,
         title: "Polling Application",
         description: "A polling application built with Angular and ASP.NET Core. It allows the user to create polls and share them with others.",
-        technologies: ["Angular", "ASP.NET Core", "C#", "Supabase", "PostgreSQL"],
+        technologies: ["ASP.NET Core", "React", "Docker", "PostgreSQL", "Google Cloud Provider"],
         images: ["/images/projects/polling-bee-1.png", "/images/projects/polling-bee-2.png", "/images/projects/polling-bee-3.png", "/images/projects/polling-bee-4.png", "/images/projects/polling-bee-5.png"],
-        liveUrl: "https://your-polling-app.com",
+        // liveUrl: "https://your-polling-app.com",
         githubUrl: "https://github.com/MhmdAL/polling-app"
     },  
     {
@@ -18,7 +18,7 @@ function Projects() {
         description: "DDS is a drone delivery system prototype. It has 3 main components: the drone, the ground station, and the mobile app. The user can request a drone to his station which will come and allow him to load his items. Then he can select a destination and the drone delivers his items to the recipient.",
         technologies: ["Node.js", "PostgreSQL", "Express", "MQTT", "Raspberry Pi", "Parrot Drone", "Python", "Flask", "MAVLink Protocol", "Native Android"],
         images: ["/images/projects/dds.png", "/images/projects/dds2.png"],
-        liveUrl: "https://github.com/MhmdAL/dds_backend", // No live demo
+        // liveUrl: "https://github.com/MhmdAL/dds_backend", // No live demo
         githubUrl: "https://github.com/MhmdAL/dds_backend", // Private/proprietary project
       },
       {

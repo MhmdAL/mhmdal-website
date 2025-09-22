@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import './ProjectCard.css'
 
 function ProjectCard({ project }) {
@@ -6,6 +7,7 @@ function ProjectCard({ project }) {
   const images = Array.isArray(project.images) ? project.images : [project.image || project.images]
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showOverlay, setShowOverlay] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length)
@@ -17,6 +19,21 @@ function ProjectCard({ project }) {
 
   const goToImage = (index) => {
     setCurrentImageIndex(index)
+  }
+
+  const openModal = () => {
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
+  const handleModalClick = (e) => {
+    // Close modal if clicking on backdrop, not the image
+    if (e.target.classList.contains('image-modal')) {
+      closeModal()
+    }
   }
 
   return (
@@ -33,8 +50,8 @@ function ProjectCard({ project }) {
             e.target.style.display = 'none';
             e.target.nextSibling.style.display = 'flex';
           }}
-          onClick={images.length > 1 ? nextImage : undefined}
-          style={{ cursor: images.length > 1 ? 'pointer' : 'default' }}
+          onClick={openModal}
+          style={{ cursor: 'pointer' }}
         />
         <div className="image-placeholder" style={{display: 'none'}}>
           <div className="placeholder-icon">📷</div>
@@ -102,6 +119,57 @@ function ProjectCard({ project }) {
           ))}
         </div>
       </div>
+
+      {/* Image Modal - Rendered as Portal at document root */}
+      {showModal && createPortal(
+        <div className="image-modal" onClick={handleModalClick}>
+          <div className="modal-content">
+            <button className="modal-close" onClick={closeModal}>
+              ×
+            </button>
+            
+            <div className="modal-image-container">
+              <img 
+                src={images[currentImageIndex]} 
+                alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                className="modal-image"
+              />
+              
+              {/* Navigation in modal for multiple images */}
+              {images.length > 1 && (
+                <>
+                  <button className="modal-nav modal-nav-prev" onClick={prevImage}>
+                    ‹
+                  </button>
+                  <button className="modal-nav modal-nav-next" onClick={nextImage}>
+                    ›
+                  </button>
+                  
+                  <div className="modal-image-counter">
+                    {currentImageIndex + 1} / {images.length}
+                  </div>
+                  
+                  <div className="modal-image-dots">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`modal-image-dot ${index === currentImageIndex ? 'active' : ''}`}
+                        onClick={() => goToImage(index)}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+            
+            <div className="modal-project-info">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   )
 }
